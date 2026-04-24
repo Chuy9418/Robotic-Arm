@@ -1,0 +1,5 @@
+-r base.txt
+# TensorRT ships with JetPack SDK — do NOT pip install tensorrt
+# Install PyTorch from NVIDIA's JetPack wheel index, not PyPI
+# Example (adjust for your JetPack version):
+#   pip install torch torchvision --index-url https://developer.download.nvidia.com/compute/redist/jp/v61
