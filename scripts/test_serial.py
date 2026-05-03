@@ -1,18 +1,25 @@
 # scripts/test_serial.py
 
+import sys
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT_DIR))
+
 import time
 import argparse
 from control.arm_controller import ArmController, MockArmController
+
 
 def run_test(controller, channel: int = 0):
     print(f"=== Servo Test — Channel {channel} ===\n")
 
     steps = [
-        (90,  "CENTER"),
-        (0,   "MIN (0 deg)"),
-        (90,  "CENTER"),
-        (180, "MAX (180 deg)"),
-        (90,  "CENTER — reset"),
+        (90, "CENTER"),
+        (70, "SMALL LEFT / DOWN"),
+        (90, "CENTER"),
+        (110, "SMALL RIGHT / UP"),
+        (90, "CENTER — reset"),
     ]
 
     for angle, label in steps:
@@ -23,6 +30,7 @@ def run_test(controller, channel: int = 0):
 
     print("\n=== Test complete ===")
     controller.close()
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
