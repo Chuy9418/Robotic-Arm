@@ -7,7 +7,6 @@ This project combines mechanical design, sensors, and control systems to simulat
 * Object detection and classification logic
 * Sorting algorithm
 * Optional interface for monitoring system behavior
-* oh yeah we finna use Python
 ## Contributors
 ### CS Team
 * Kai Llora - Team Lead
