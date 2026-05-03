@@ -17,7 +17,7 @@ def run_test(controller, channel: int = 0):
     steps = [
         (90, "CENTER"),
         (70, "SMALL LEFT / DOWN"),
-        (90, "CENTER"),
+        (80, "CENTER"),
         (110, "SMALL RIGHT / UP"),
         (90, "CENTER — reset"),
     ]
