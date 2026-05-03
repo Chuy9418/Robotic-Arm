@@ -8,7 +8,16 @@ function App() {
     3: 90,
   });
 
-  const moveServo = async (channel, angle) => {
+  const jointNames = {
+    0: "Base",
+    1: "Shoulder",
+    2: "Elbow",
+    3: "Wrist",
+  };
+
+  const moveServo = async (channel) => {
+    const angle = angles[channel];
+
     try {
       const response = await fetch("http://127.0.0.1:8000/control/move", {
         method: "POST",
@@ -23,8 +32,10 @@ function App() {
 
       const data = await response.json();
       console.log(data);
+      alert(`Moved ${jointNames[channel]} to ${angle}°`);
     } catch (error) {
-      console.error("Error moving servo:", error);
+      console.error(error);
+      alert("Could not connect to backend yet. This is expected if FastAPI is not running.");
     }
   };
 
@@ -35,72 +46,40 @@ function App() {
     }));
   };
 
-  const sendAngle = (channel) => {
-    moveServo(channel, angles[channel]);
-  };
-
-  const homeArm = async () => {
-    setAngles({
-      0: 90,
-      1: 90,
-      2: 90,
-      3: 90,
-    });
-
-    await fetch("http://127.0.0.1:8000/control/home", {
-      method: "POST",
-    });
-  };
-
-  const jointNames = {
-    0: "Base",
-    1: "Shoulder",
-    2: "Elbow",
-    3: "Wrist",
-  };
-
   return (
-    <div style={{ padding: "30px", fontFamily: "Arial" }}>
+    <div style={{ padding: "40px", fontFamily: "Arial", maxWidth: "700px" }}>
       <h1>Robotic Arm Control</h1>
+      <p>Use the sliders to choose servo angles.</p>
+      <p>Scamuel Bernardo is selling some totally legit Essentials!</p>
 
       {[0, 1, 2, 3].map((channel) => (
         <div
           key={channel}
           style={{
             border: "1px solid #ccc",
-            padding: "15px",
-            marginBottom: "15px",
-            borderRadius: "8px",
+            borderRadius: "10px",
+            padding: "20px",
+            marginBottom: "16px",
           }}
         >
           <h2>{jointNames[channel]}</h2>
 
           <input
             type="range"
-            min="0"
-            max="180"
+            min="60"
+            max="120"
             value={angles[channel]}
             onChange={(e) => handleSliderChange(channel, e.target.value)}
+            style={{ width: "100%" }}
           />
 
           <p>Angle: {angles[channel]}°</p>
 
-          <button onClick={() => sendAngle(channel)}>
+          <button onClick={() => moveServo(channel)}>
             Move {jointNames[channel]}
           </button>
         </div>
       ))}
-
-      <button
-        onClick={homeArm}
-        style={{
-          padding: "12px 20px",
-          fontSize: "16px",
-          marginTop: "20px",
-        }}
-      >
-        Home Arm
-      </button>
     </div>
   );
 }
