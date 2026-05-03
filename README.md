@@ -9,8 +9,19 @@ This project combines mechanical design, sensors, and control systems to simulat
 * Optional interface for monitoring system behavior
 * oh yeah we finna use Python
 ## Contributors
-* Jesus Moreno
+### CS Team
+* Kai Llora - Team Lead
 * Pragya Sharma
-* Kai Llora
+* Jesus Moreno
 * Noah Abass
 * Ezra Gale
+### Hardware Team
+* Evan Kurian - Team Lead
+* Ysabel Godinez
+* Amy Espinoza
+* Andrew Trang
+### Design Team
+* Daniel Martinez - Team Lead
+* Emmanuel Calderon
+* Amaan Sayeed
+* Samuel Bernardo
