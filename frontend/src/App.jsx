@@ -48,7 +48,7 @@ function App() {
 
   return (
     <div style={{ padding: "40px", fontFamily: "Arial", maxWidth: "700px" }}>
-      <h1>Robotic Arm Control</h1>
+      <h1>Robotic Arm Control yuhhh</h1>
       <p>Use the sliders to choose servo angles.</p>
       <p>Scamuel Bernardo is selling some totally legit Essentials!</p>
 
