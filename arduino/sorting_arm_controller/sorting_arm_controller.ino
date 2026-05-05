@@ -7,14 +7,16 @@
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 
 // Adjust these if your servos do not reach correct angles
-#define SERVOMIN 150
-#define SERVOMAX 600
+#define SERVOMIN 102
+#define SERVOMAX 512
+#define SERVO_RANGE 270
 
 // Optional electromagnet pin
 #define MAGNET_PIN 8
 
 int angleToPulse(int angle) {
-  return map(angle, 0, 180, SERVOMIN, SERVOMAX);
+  angle = constrain(angle, 0, SERVO_RANGE)
+  return map(angle, 0, SERVO_RANGE, SERVOMIN, SERVOMAX);
 }
 
 void setup() {
@@ -45,7 +47,7 @@ void loop() {
       sscanf(command.c_str(), "MOVE %d %d", &channel, &angle);
 
       channel = constrain(channel, 0, 15);
-      angle = constrain(angle, 0, 180);
+      angle = constrain(angle, 0, SERVO_RANGE);
 
       pwm.setPWM(channel, 0, angleToPulse(angle));
 
@@ -69,10 +71,10 @@ void loop() {
 
     // Example command: HOME
     else if (command == "HOME") {
-      pwm.setPWM(0, 0, angleToPulse(90));
-      pwm.setPWM(1, 0, angleToPulse(90));
-      pwm.setPWM(2, 0, angleToPulse(90));
-      pwm.setPWM(3, 0, angleToPulse(90));
+      pwm.setPWM(0, 0, angleToPulse(135));
+      pwm.setPWM(1, 0, angleToPulse(135));
+      pwm.setPWM(2, 0, angleToPulse(135));
+      pwm.setPWM(3, 0, angleToPulse(135));
 
       digitalWrite(MAGNET_PIN, LOW);
 
