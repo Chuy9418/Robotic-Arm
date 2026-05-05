@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://www.instagram.com/csufthetatau/">
-    <img src="images/IMG_5008.jpeg" alt="Follow Theta Tau on Instagram">
+    <img src="IMG_5008.jpeg" alt="Follow Theta Tau on Instagram">
   </a>
 </p>
 
