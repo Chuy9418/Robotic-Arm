@@ -1,7 +1,7 @@
 import serial
 import time
 
-PORT = "COM3"
+PORT = "COM4"
 BAUD_RATE = 9600
 
 
@@ -19,10 +19,15 @@ time.sleep(2)
 # Turn magnet on
 send_command(arduino, "MAGNET ON")
 
-send_command(arduino, "MOVE 2 0")
+# RESET
+send_command(arduino, "MOVE 2 220")
 time.sleep(2)
-send_command(arduino, "MOVE 2 165")
+send_command(arduino, "MOVE 1 200")
 time.sleep(2)
+send_command(arduino, "MOVE 0 60")
+time.sleep(2)
+
+
 
 # Turn magnet off
 send_command(arduino, "MAGNET OFF")
