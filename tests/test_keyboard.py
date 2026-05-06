@@ -1,6 +1,6 @@
 """
 Keyboard control for the robotic arm.
-Run with: python scripts/keyboard_control.py
+Run with: python .\tests\test_keyboard.py
 
   A / D  →  Wrist      (channel 0)  left / right
   W / S  →  Elbow  (channel 1)  up   / down
