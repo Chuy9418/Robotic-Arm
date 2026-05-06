@@ -2,10 +2,10 @@
 Keyboard control for the robotic arm.
 Run with: python scripts/keyboard_control.py
 
-  A / D  →  Base      (channel 0)  left / right
-  W / S  →  Shoulder  (channel 1)  up   / down
-  Q / E  →  Elbow     (channel 2)  up   / down
-  Z / X  →  Wrist     (channel 3)  up   / down
+  A / D  →  Wrist      (channel 0)  left / right
+  W / S  →  Elbow  (channel 1)  up   / down
+  Q / E  →  Shoulder     (channel 2)  up   / down
+  Z / X  →  Base     (channel 3)  up   / down
   M      →  Magnet toggle
   H      →  Home all servos (90°)
   Esc    →  Quit
@@ -15,7 +15,7 @@ import msvcrt
 import time
 import serial
 
-PORT = "COM4"
+PORT = "COM3"
 BAUD_RATE = 9600
 STEP = 5  # degrees per keypress
 LIMITS = (0, 180)
